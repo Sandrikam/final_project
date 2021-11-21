@@ -57,6 +57,13 @@
             <version>7.4.0</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://selenide.org/quick-start.html -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>6.0.3</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 </project>
