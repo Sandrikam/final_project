@@ -1,3 +1,5 @@
+package earlierQuizes;
+
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.commands.GetInnerText;
 import com.codeborne.selenide.commands.ShouldHave;
@@ -12,8 +14,9 @@ public class SelenideBasics2Test {
 
     public void runTest() {
         open("https://demoqa.com/books");
-        $(".rt-tbody").shouldHave(value("O'Reilly Media"));// $("O'Reilly Media");
+        $(".rt-tbody").$(".rt-td").shouldHave(text("O'Reilly Media"));// $("O'Reilly Media");
+        //$$("div").shouldHave( ("O'Reilly Media"));
         $$("div").shouldHave(CollectionCondition.size(10));
 
     }}
-//.$(".rt-td")
+//
