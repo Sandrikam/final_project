@@ -8,12 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TEST_QUIZ" />
         <module name="TEST_QUIZ (1)" />
-        <module name="untitled" />
         <module name="untitled (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TEST_QUIZ" target="11" />
+      <module name="TEST_QUIZ" target="17" />
       <module name="TEST_QUIZ (1)" target="11" />
       <module name="untitled" target="17" />
       <module name="untitled (1)" target="17" />

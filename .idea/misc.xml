@@ -3,7 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/webTests/pom.xml" />
         <option value="$PROJECT_DIR$/TEST_QUIZ/pom.xml" />
         <option value="$PROJECT_DIR$/SandroProjectQuiz1/SeleniumCourse/webTests/pom.xml" />
         <option value="$PROJECT_DIR$/SandroProjectQuiz1/SeleniumCourse/TEST_QUIZ/pom.xml" />
