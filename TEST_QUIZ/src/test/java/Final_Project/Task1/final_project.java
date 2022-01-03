@@ -1,23 +1,24 @@
-package Final_Project;
+package Final_Project.Task1;
 
 // --------  IMPORTS ----------------
 
+import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import static com.codeborne.selenide.Selenide.*;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.devtools.Message;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import com.google.gson.JsonObject;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 
 //Main Class that contains all the test classes
@@ -108,32 +109,25 @@ public class final_project {
         WebElement loginBtn = driver.findElement(By.xpath("//*[@id=\"login\"]"));
         loginBtn.click();
 
-/*
-        var deleteAccountSelectorString = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 >" +
+
+
+        var delUsrBtn = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 >" +
                 " div.profile-wrapper > div.mt-2.buttonWrap.row > div.text-center.button > button";
-        $(deleteAccountSelectorString)
+        $(delUsrBtn)
                 .click();
         Thread.sleep(200);
 
-        var okBtnSelector = "#closeSmallModal-ok";
-        $(okBtnSelector).click();
+        var selectOK = "#closeSmallModal-ok";
+        $(selectOK).click();
 
         var text = switchTo().alert().getText();
         switchTo().alert().accept();
         Assert.assertEquals(text, "User Deleted.");
 
-        Thread.sleep(100);
-*/
 
 /*
-        var deleteAccountSelectorString = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 >" +
-                " div.profile-wrapper > div.mt-2.buttonWrap.row > div.text-center.button > button";
-        $(deleteAccountSelectorString)
-                .click();
-*/
-
         WebElement delUsrBtn = driver.findElement(By.xpath("//*[@id=\\\"submit\\\"][1]")); //.findElement(By.xpath("//*[@id=\"submit\"]"));
-        delUsrBtn.click();
+        delUsrBtn.click();*/
 
 
 /*
@@ -193,34 +187,24 @@ switchTo().frame("profile").
         //sending login request
         var response = request.post("/Account/v1/Authorized");
         var statusCode = response.getStatusCode();
-        var message = response.asString();
+        var message = response.getBody().asString();
 
         System.out.println("User logged in with: " + statusCode);
 //recieving and expecting code 200 OK  to be sure that user is logged in
         Assert.assertEquals(statusCode, 404);
         //var invalidUserText = $("#name").getText();
-        Assert.assertEquals(message, "Invalid username or password!");
 
-    }
-/*    @Test
-    public void CallRequest() {
-        var url = "https://bookstore.toolsqa.com/Account/v1";
-        RestAssured.baseURI = url;
-
-        RequestSpecification req = RestAssured.given();
-
-        var bodyData = new JsonObject();
-        bodyData.addProperty("userName", userData.USERNAME);
-        bodyData.addProperty("password", userData.PASSWORD);
-
-        var jsonString = bodyData.toString();
-        req.header("Content-Type", "application/json");
-        req.body(jsonString);
-
-
-        var res = req.post("/Authorized");
-        var data = ParseResponseBody(res.getBody());
+        var data = ParseResponseBody(response.getBody());
 
         Assert.assertEquals(data.message, "User not found!");
-    }*/
-}
+
+    }
+
+    private GetResponseAuthData ParseResponseBody(ResponseBody responseBody) {
+        try {
+            return responseBody.as(GetResponseAuthData.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+}}
