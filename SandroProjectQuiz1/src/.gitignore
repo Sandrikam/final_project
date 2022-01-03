@@ -1,9 +1,0 @@
-.idea/
-build/
-target/
-
-*.ipr
-*.iml
-*.iws
-*.log
-*.mdmp
