@@ -94,21 +94,20 @@ public class final_project {
         String url = "https://demoqa.com/login";
         driver.get(url);
 
-       // webdriver().wait(200);
+        // webdriver().wait(200);
         WebElement userName = driver.findElement(By.xpath("//*[@id=\"userName\"]"));
         userName.click();
         userName.sendKeys(userData.USERNAME);
 
-       // webdriver().wait(200);
+        // webdriver().wait(200);
 
         WebElement passWord = driver.findElement(By.xpath("//*[@id=\"password\"]"));
         passWord.click();
         passWord.sendKeys(userData.PASSWORD);
 
-       // webdriver().wait(200);
+        // webdriver().wait(200);
         WebElement loginBtn = driver.findElement(By.xpath("//*[@id=\"login\"]"));
         loginBtn.click();
-
 
 
         var delUsrBtn = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 >" +
@@ -130,42 +129,10 @@ public class final_project {
         delUsrBtn.click();*/
 
 
-/*
-switchTo().frame("profile").
-        $("#userName").setValue(userData.USERNAME);
-        $("#password").setValue(userData.PASSWORD);
-        $("#login").click();
-        Thread.sleep(1000);*/
-
-/*
-
-        var delAcctBtnAction = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 >" +
-                " div.profile-wrapper > div.mt-2.buttonWrap.row > div.text-center.button > button";
-        $(delAcctBtnAction)
-                .click();
-
-        System.out.println("Clicked delAcctBtnAction btn: " + delAcctBtnAction);
-
-        //Thread.sleep(200);
-        var okBtnSelector = "#closeSmallModal-ok";
-        $(okBtnSelector).click();
-
-        System.out.println("btn ok Selected");
-
-        var text = switchTo().alert().getText();
-        switchTo().alert().accept();
-        Assert.assertEquals(text, "User Deleted.");
-
-        System.out.println("text is: " + text);
-
-
-        // Thread.sleep(100);
-*/
-
     }
 
     @Test
-    public void validateMessage(){
+    public void validateMessage() {
         //login with a request
 
 //defining a base URL
@@ -190,16 +157,18 @@ switchTo().frame("profile").
         var message = response.getBody().asString();
 
         System.out.println("User logged in with: " + statusCode);
-//recieving and expecting code 200 OK  to be sure that user is logged in
+//recieving and expecting code 404 Error to be sure that user does not exist
+
         Assert.assertEquals(statusCode, 404);
         //var invalidUserText = $("#name").getText();
 
         var data = ParseResponseBody(response.getBody());
-
+//checking recieved message
         Assert.assertEquals(data.message, "User not found!");
 
     }
 
+    //parsing Json Request
     private GetResponseAuthData ParseResponseBody(ResponseBody responseBody) {
         try {
             return responseBody.as(GetResponseAuthData.class);
@@ -207,4 +176,5 @@ switchTo().frame("profile").
             System.out.println(e.getMessage());
             return null;
         }
-}}
+    }
+}

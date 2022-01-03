@@ -1,5 +1,7 @@
 package Final_Project.Task2;
 
+// --------  IMPORTS ----------------
+
 import io.restassured.specification.RequestSpecification;
 import com.codeborne.selenide.logevents.SelenideLogger;
 
